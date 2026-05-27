@@ -116,7 +116,7 @@
 
         /* Раздел участников (Состав) */
         .roster-section {
-            padding: 100px 5% 150px 5%;
+            padding: 100px 5% 60px 5%;
             background-color: #050505;
             border-top: 1px solid rgba(255, 255, 255, 0.02);
             text-align: center;
@@ -194,12 +194,57 @@
             margin-top: 5px;
         }
 
+        /* Раздел правил */
+        .rules-section {
+            padding: 100px 5% 150px 5%;
+            background-color: #000000;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+        .rules-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+        .rule-card {
+            background: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: border-color 0.3s;
+        }
+        .rule-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .rule-num {
+            font-size: 20px;
+            font-weight: 900;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .rule-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            padding-top: 4px;
+        }
+
         /* Мобильная адаптация */
         @media (max-width: 768px) {
             .clan-title { font-size: 45px; }
             nav { display: none; }
             .buttons-group { flex-direction: column; gap: 15px; }
             .grid-container { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .rule-card { padding: 15px; gap: 15px; }
         }
     </style>
 </head>
@@ -210,27 +255,28 @@
         <nav>
             <a href="#">Главная</a>
             <a href="#sostav">Участники</a>
-            <a href=" https://discord.gg/p5fDRVCyQR " target="_blank">Discord</a>
+            <a href="#rules">Правила</a>
+            <a href="https://discord.gg/p5fDRVCyQR" target="_blank">Discord</a>
         </nav>
     </header>
 
     <div class="hero-section">
         <h1 class="clan-title">CLXN XX1</h1>
         <p class="clan-description">
-            NАS NЕ NАЙТИ. NАS NЕ ПRОDАТЬ. NАS NЕ ПЕRЕИГRАТЬ.
+           NАS NЕ NАЙТИ. NАS NЕ ПRОDАТЬ. NАS NЕ ПЕRЕИГRАТЬ.
         </p>
         <div class="buttons-group">
             <a href="https://discord.gg/p5fDRVCyQR" class="btn" target="_blank">Discord</a>
-            <a href="#sostav" class="btn btn-outline">Участники</a>
+            <a href="#rules" class="btn btn-outline">Правила</a>
         </div>
     </div>
 
+    <!-- РАЗДЕЛ: СОСТАВ -->
     <section class="roster-section" id="sostav">
         <h2 class="section-title">Sostav</h2>
-        <div class="section-date">Обновлено: 28.05.2026</div>
+        <div class="section-date">Обновлено: 27.05.2026</div>
         <div class="section-notice">Состав может измениться в любое время</div>
 
-        <!-- КАТЕГОРИЯ: CO-OWNERS -->
         <div class="role-title owner">co-owner</div>
         <div class="grid-container" style="max-width: 600px; margin-bottom: 40px;">
             <div class="member-card">
