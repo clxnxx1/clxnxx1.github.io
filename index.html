@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLXN XX1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Верхнее меню */
+        header {
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+        nav a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Главный экран */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        .clan-title {
+            font-size: 80px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+        .clan-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+        .buttons-group {
+            display: flex;
+            gap: 20px;
+            z-index: 5;
+        }
+        .btn {
+            display: inline-block;
+            min-width: 160px;
+            padding: 15px 30px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #000000;
+            text-decoration: none;
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Раздел участников (Состав) */
+        .roster-section {
+            padding: 100px 5% 150px 5%;
+            background-color: #050505;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            text-align: center;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .section-date {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .section-notice {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.25);
+            margin-bottom: 60px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+        .role-title {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 40px 0 20px 0;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .role-title::before, .role-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .role-title.owner { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .member-card {
+            background: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            transition: border 0.3s, transform 0.3s;
+        }
+        .member-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .member-id {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+        .member-role {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 5px;
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 768px) {
+            .clan-title { font-size: 45px; }
+            nav { display: none; }
+            .buttons-group { flex-direction: column; gap: 15px; }
+            .grid-container { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CLXN XX1</div>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#sostav">Участники</a>
+            <a href="https://discord.gg" target="_blank">Discord</a>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <h1 class="clan-title">CLXN XX1</h1>
+        <p class="clan-description">
+            Элитный клан с мрачной атмосферой, сиющими игроками и современным стилем. Стань частью команды и доминируй вместе с нами.
+        </p>
+        <div class="buttons-group">
+            <a href="https://discord.gg" class="btn" target="_blank">Discord</a>
+            <a href="#sostav" class="btn btn-outline">Участники</a>
+        </div>
+    </div>
+
+    <section class="roster-section" id="sostav">
+        <h2 class="section-title">Sostav</h2>
+        <div class="section-date">Обновлено: 27.05.2026</div>
+        <div class="section-notice">Состав может измениться в любое время</div>
+
+        <!-- КАТЕГОРИЯ: CO-OWNERS -->
+        <div class="role-title owner">co-owner</div>
+        <div class="grid-container" style="max-width: 600px; margin-bottom: 40px;">
+            <div class="member-card">
+                <div class="member-id">@kerrpon4ik</div>
+                <div class="member-role">co-owner</div>
+            </div>
+            <div class="member-card">
+                <div class="member-id">@trust1ng</div>
+                <div class="member-role">co-owner</div>
+            </div>
+        </div>
+
+        <!-- КАТЕГОРИЯ: CO-CLAN (Ровно 20 мест) -->
+        <div class="role-title">co-clan</div>
+        <div class="grid-container">
+            <div class="member-card"><div class="member-id">@vanyagu2</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@catalinsk2</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@miiloii</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@sad1539</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@vavawww1377</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@minipauk</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@oppendx</div><div class="member-role">co-clan</div></div>
+            <!-- Заглушки для будущих участников -->
+            <div class="member-card"><div class="member-id">@47quasar</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@lveryx</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@lokigey</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@kurva7480</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@cv1rti</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@makrei_4</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@geniu_288</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@xleb_34</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@adolfgitler_56172</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@lunnuilord
+</div><div class="member-role">co-clan</div></div>
+            <div class="member-card"><div class="member-id">@kidyca
+</div><div class="member-role">co-clan</div></div>
