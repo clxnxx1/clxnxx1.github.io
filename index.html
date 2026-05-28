@@ -112,7 +112,12 @@
         .btn-outline:hover {
             background: #ffffff;
             color: #000000;
-        }
+   <div id="raid-intro">
+  <div class="hazmat-runner"></div>
+  <div class="explosion"></div>
+  <div class="title-text">Rustex Remake T1 XX1</div>
+</div>
+     }
 #raid-intro {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
@@ -194,7 +199,15 @@
     visibility: hidden;
     pointer-events: none;
   }
-}
+}<script>
+  window.onload = () => {
+    setTimeout(() => {
+      const intro = document.getElementById('raid-intro');
+      if(intro) intro.style.display = 'none';
+    }, 6000); // Забираем через 6 секунд
+  };
+</script>
+
 
         /* Раздел участников (Состав) */
         .roster-section {
